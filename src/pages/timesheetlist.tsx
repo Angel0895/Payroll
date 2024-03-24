@@ -5,7 +5,7 @@ import { TimesheetData } from '../models/models';
 import { convertTimestampToDate, displayDuration } from '../services/commonService';
 
 /**
- * The list of timesheets available for 
+ * The list of timesheets available for the logged in user. Update and deletion of timesheet is done here as well
  */
 export default function TimesheetList({ navigation, route }: any): React.JSX.Element {
     const userId: String = route.params.userId;

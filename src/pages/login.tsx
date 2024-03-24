@@ -5,6 +5,7 @@ import {
     SafeAreaView, StyleSheet, Text, TextInput, View,
   } from 'react-native';
 import { getDBConnection, saveUserData, getUserData, createTable } from '../db/db-service';
+import { CommonActions } from '@react-navigation/native';
 
 type registerItem = {
     registerUser: Function
@@ -49,11 +50,17 @@ export default function Login({ navigation }: any ): React.JSX.Element {
         let currentUserId = userid;
         clearEntry();
 
-        return (
-            navigation.navigate('Home', {
-                userId: currentUserId
+        navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [
+                {
+                  name: 'Home',
+                  params: { userId: currentUserId },
+                },
+              ],
             })
-        )
+          );
     }
 
     return (
