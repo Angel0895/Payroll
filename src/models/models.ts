@@ -3,9 +3,9 @@
  */
 
 export type UserData = {
-    UserId: String,
-    Password: String,
-    FullName: String
+    UserId: string,
+    Password: string,
+    FullName: string
 }
 
 export type TimesheetData = {

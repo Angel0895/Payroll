@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
     Button,
     SafeAreaView, StyleSheet, Text, TextInput, View,
   } from 'react-native';
 import { UserData } from '../models/models';
 import { getDBConnection, saveUserData, getUserData } from '../db/db-service';
+import type { RootState } from '../store/configureStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserId, setPassword, setFullName } from '../slices/userSlice';
 
 /**
  * In this page, user register for new account
  */
 export default function Register({ navigation }: any ): React.JSX.Element {
-    const [userid, setUserId] = useState('');
-    const [password, setPassword] = useState('');
-    const [fullname, setFullName] = useState('');
+    const dispatch = useDispatch();
+    const userid = useSelector((state: RootState) => state.users.UserId);
+    const password = useSelector((state: RootState) => state.users.Password);
+    const fullname = useSelector((state: RootState) => state.users.FullName);
+  
+    //const [userid, setUserId] = useState('');
+    //const [password, setPassword] = useState('');
+    //const [fullname, setFullName] = useState('');
 
     const addUser = async (userData: UserData) => {
         try {
@@ -33,8 +41,21 @@ export default function Register({ navigation }: any ): React.JSX.Element {
         }
 
         addUser(user);
+        clearEntry();
         navigation.navigate("Login")
     }
+
+    function clearEntry(){
+        dispatch(setUserId(''));
+        dispatch(setPassword(''));
+        dispatch(setFullName(''));
+    }
+
+    useEffect(() => {
+        navigation.addListener(
+            'focus', () => clearEntry()
+        )
+    });
 
     return (
         <SafeAreaView>
@@ -42,7 +63,7 @@ export default function Register({ navigation }: any ): React.JSX.Element {
                 <View style={styles.innerContainer}>
                     <Text>Username: </Text>
                     <TextInput
-                        onChangeText={newText => setUserId(newText)}
+                        onChangeText={newText => dispatch(setUserId(newText))}
                         style={styles.textInput}
                         value={userid}
                     />
@@ -50,7 +71,7 @@ export default function Register({ navigation }: any ): React.JSX.Element {
                 <View style={styles.innerContainer}>
                     <Text>Password: </Text>
                     <TextInput 
-                        onChangeText={newText => setPassword(newText)}
+                        onChangeText={newText => dispatch(setPassword(newText))}
                         style={styles.textInput}
                         secureTextEntry={true}
                         value={password}
@@ -59,7 +80,7 @@ export default function Register({ navigation }: any ): React.JSX.Element {
                 <View style={styles.innerContainer}>
                     <Text>Fullname: </Text>
                     <TextInput 
-                        onChangeText={newText => setFullName(newText)}
+                        onChangeText={newText => dispatch(setFullName(newText))}
                         style={styles.textInput}
                         value={fullname}
                     />
