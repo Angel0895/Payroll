@@ -44,8 +44,6 @@ export default function ManageTimesheet(props: timesheetItem): React.JSX.Element
             Comment: comment
         }
 
-        console.log("### timesheet: ", timesheet);
-
         props.manageTimesheets(timesheet);
         props.navigation.goBack();
     }
@@ -120,7 +118,6 @@ export default function ManageTimesheet(props: timesheetItem): React.JSX.Element
                     setIsVisible={ setShowPicker }
                     onConfirm={(pickedDuration) => {
                         setHoursWorked(formatTime(pickedDuration));
-                        console.log("### pickedDuration: ", pickedDuration);
                         setShowPicker(false);
                     }}
                     onCancel={()=>setShowPicker(false)}

@@ -105,8 +105,6 @@ export const getUserData = async (db: SQLiteDatabase): Promise<UserData[]> => {
   };
 
   export const updateTimesheetData = async (db: SQLiteDatabase, timesheetData: TimesheetData) => {
-    console.log("### timesheet: ", timesheetData);
-
     const updateQuery =
       `UPDATE ${timesheetTableName} 
         SET Date = ${timesheetData.Date}, 
@@ -114,8 +112,6 @@ export const getUserData = async (db: SQLiteDatabase): Promise<UserData[]> => {
         TaskInfo = '${timesheetData.TaskInfo}', 
         Comment = '${timesheetData.Comment}'  
         where Id = ${timesheetData.Id}`;
-
-    console.log("### update query: ", updateQuery);
   
     return db.executeSql(updateQuery);
   };

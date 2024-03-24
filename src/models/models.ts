@@ -1,3 +1,7 @@
+/**
+ * Data models for users and timesheet
+ */
+
 export type UserData = {
     UserId: String,
     Password: String,

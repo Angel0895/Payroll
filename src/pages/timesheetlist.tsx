@@ -15,7 +15,6 @@ export default function TimesheetList({ navigation, route }: any): React.JSX.Ele
         try {
           const db = await getDBConnection();   
           const storedTimesheet = await getTimesheetDataById(db, userId);
-          console.log("### stored Timesheet in getting list: ", storedTimesheet)
 
           setListData(storedTimesheet);
         } catch (error) {

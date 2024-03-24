@@ -17,7 +17,6 @@ export default function EditTimeSheet({ navigation, route }: any): React.JSX.Ele
           await updateTimesheetData(db, timesheetData);
     
           const storedTimesheet = await getTimesheetDataById(db, userId);
-          console.log("### stored Timesheet by id: ", storedTimesheet);
         } catch (error) {
           console.error(error);
         }

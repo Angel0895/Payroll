@@ -1,4 +1,4 @@
-import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
+/*import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../pages/login';
 import Register from '../pages/register';
@@ -19,4 +19,4 @@ function NavigationService () {
     )
 }
 
-export default NavigationService;
+export default NavigationService;*/

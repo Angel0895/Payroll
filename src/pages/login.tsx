@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Alert,
     Button,
     SafeAreaView, StyleSheet, Text, TextInput, View,
   } from 'react-native';
-import { UserData } from '../models/models';
 import { getDBConnection, saveUserData, getUserData, createTable } from '../db/db-service';
-import Home from './home';
-import Register from './register';
 
 type registerItem = {
     registerUser: Function
@@ -17,7 +14,6 @@ type registerItem = {
  * In this page, user logs in with the username and password
  */
 export default function Login({ navigation }: any ): React.JSX.Element {
-//export default function Register(props: registerItem): React.JSX.Element {
     const [userid, setUserId] = useState('');
     const [password, setPassword] = useState('');
 
@@ -105,14 +101,10 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         height: "100%",
-        //justifyContent: "flex-start",
-        //alignItems: "flex-start",
         margin: 20
     },
     innerContainer: {
         flexDirection: 'row',
-        //justifyContent: "flex-start",
-        //alignItems: "flex-start",
         width: "100%",
         margin: 10
     },
@@ -121,7 +113,6 @@ const styles = StyleSheet.create({
     }, 
     buttonContainer: {
         flexDirection: "row",
-        //alignItems: "center", 
         width: "100%"
     },
     buttonInnerContainer: {
